@@ -11,6 +11,15 @@
         <a href={% url "alumnos" %}>Alumnos</a>
         <a href={% url "crear_alumno" %}>Crear Alumno</a>
     </nav>
-    <h1>Hola Soy tu primera pagina web!!!</h1>
+    <h1>Listado de alumnos</h1>
+    <ul>
+        {% for alumno in alumnos %}
+            {% if alumno.nota > 6 %}
+                <li style="color: green">{{alumno}}</li>
+            {% else %}
+                <li style="color: red">{{alumno}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 </body>
 </html>
