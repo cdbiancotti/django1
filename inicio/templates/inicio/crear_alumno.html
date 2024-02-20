@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
     {% comment %} <h1>Se creo el alumno {{alumno}} correctamente...</h1> {% endcomment %}
 
+    {% block header %}
     <h1>Crear Alumno</h1>
+    {% endblock header %}
+
+    {% block main %}
+    
 
     <form action={% url "crear_alumno" %} method="POST">
         {% csrf_token %}
@@ -31,6 +29,4 @@
         
         <input type="submit" value="Crear Alumno">
     </form>
-</body>
-</html>
-
+    {% endblock main %}
