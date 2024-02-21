@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block header %}
+<h1>Crear Auto</h1>
+{% endblock header %}
+
+{% block main %}
+<form action={% url "crear_auto" %} method="POST">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    
+    <input type="submit" value="Crear Auto">
+</form>
+{% endblock main %}
