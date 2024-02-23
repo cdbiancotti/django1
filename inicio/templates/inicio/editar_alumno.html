@@ -7,6 +7,7 @@
 <form action={% url "editar_alumno" alumno.id %} method="POST">
     {% csrf_token %}
     <table>
+        {{formulario.media}}
         {{formulario}} 
     </table>
     <input type="submit" value="Editar Alumno">
