@@ -23,7 +23,16 @@
                 <a class="navbar-brand" href={% url "inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "alumnos" %}>Alumnos</a>
                 <a class="navbar-brand" href={% url "autos" %}>Autos</a>
-                {% comment %} <a class="btn btn-primary" href="#signup">Sign Up</a> {% endcomment %}
+                {% if request.user.is_authenticated %}
+                <a class="navbar-brand" href={% url "perfil" %}>{{request.user.username}}</a>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary">Logout</button>
+                </form>
+                {% else %}
+                <a class="btn btn-warning" href={% url "registro" %}>Registrarse</a>
+                <a class="btn btn-primary" href={% url "login" %}>Login</a>
+                {% endif %}
             </div>
         </nav>
         <!-- Masthead-->

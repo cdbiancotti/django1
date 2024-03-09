@@ -11,9 +11,9 @@
 <ul>
     {% for auto in autos %}
     <li>{{auto}} | 
-        {% comment %} <a href={% url 'ver_auto' auto.id %}>Ver</a> 
+        <a href={% url 'detalle_auto' auto.id %}>Detalle</a> 
         | <a href={% url 'eliminar_auto' auto.id %}>Eliminar</a> |
-        | <a href={% url 'editar_auto' auto.id %}>Editar</a>  {% endcomment %}
+        | <a href={% url 'editar_auto' auto.id %}>Editar</a> 
     </li>
     {% endfor %}
 </ul>

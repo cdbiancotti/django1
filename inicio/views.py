@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from inicio.models import Alumno
 import random
 from inicio.forms import FormularioCreacionAlumno, BusquedaAlumno, FormularioEdicionAlumno
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     
@@ -85,12 +86,13 @@ def crear_alumno(request):
         
     return render(request, 'inicio/crear_alumno.html', {'formulario': formulario})
 
-
+@login_required
 def eliminar_alumno(request, id_alumno):
     alumno = Alumno.objects.get(id=id_alumno)
     alumno.delete()
     return redirect('alumnos')
-    
+
+@login_required
 def editar_alumno(request, id_alumno):
     alumno = Alumno.objects.get(id=id_alumno)
     formulario = FormularioEdicionAlumno(initial={'nombre': alumno.nombre, 'apellido':alumno.apellido, 'edad':alumno.edad, 'biografia': alumno.biografia, 'nota':alumno.nota})
